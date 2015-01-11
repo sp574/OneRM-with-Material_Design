@@ -11,4 +11,8 @@
 
     <dimen name="content_margin">8dp</dimen>
     <dimen name="twice_content_margin">20dp</dimen>
+    <dimen name="x3_content_margin">28dp</dimen>
+    <dimen name="x4_content_margin">36dp</dimen>
+    <dimen name="x5_content_margin">44dp</dimen>
+    <dimen name="x6_content_margin">50dp</dimen>
 </resources>

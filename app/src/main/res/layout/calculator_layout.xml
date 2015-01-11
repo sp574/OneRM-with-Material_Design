@@ -9,7 +9,10 @@
     android:paddingLeft="@dimen/app_rest_padding"
     android:paddingRight="@dimen/app_rest_padding"
     android:paddingTop="@dimen/app_top_padding"
-    tools:context=".CalculatorFragment">
+    tools:context=".CalculatorFragment"
+    android:focusable="true"
+    android:focusableInTouchMode ="true"
+    android:id="@+id/rl_calculator">
 
     <!-- Weight Lifted -->
     <TextView
@@ -28,68 +31,54 @@
         android:layout_below="@id/tv_weight"
         android:layout_centerHorizontal="true"
         android:ems="4"
+        android:maxLength="5"
         android:gravity="center_horizontal"
         android:inputType="number|numberDecimal" />
 
 
     <!-- Reps Performed -->
 
-    <LinearLayout
-        android:id="@+id/ll_reps_perf"
-        android:layout_width="match_parent"
+
+    <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+        android:id="@+id/discrete_reps"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/et_weight"
-        android:layout_marginTop="@dimen/content_margin"
         android:layout_centerHorizontal="true"
-        android:gravity="center">
+        android:layout_marginTop="@dimen/x6_content_margin"
+        app:dsb_max="10"
+        app:dsb_min="0"
+        app:dsb_value="5" />
 
-        <TextView
-            android:id="@+id/tv_reps"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_below="@id/et_weight"
-            android:layout_centerHorizontal="true"
-            android:text="@string/tv_reps"
-            android:textSize="@dimen/app_main_text" />
-
-        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
-            android:id="@+id/discrete_reps"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/et_weight"
-            android:layout_centerHorizontal="true"
-            app:dsb_max="10"
-            app:dsb_min="0"
-            app:dsb_value="5" />
-    </LinearLayout>
-
+    <TextView
+        android:id="@+id/tv_reps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/discrete_reps"
+        android:layout_centerHorizontal="true"
+        android:text="@string/tv_reps"
+        android:textSize="@dimen/app_main_text" />
 
     <!-- Results: 1RM -->
 
-    <LinearLayout
-        android:id="@+id/ll_your_onerm"
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/tv_your_onerm"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ll_reps_perf"
-        android:layout_marginTop="@dimen/content_margin"
         android:layout_centerHorizontal="true"
-        android:gravity="center">
+        android:layout_marginTop="@dimen/twice_content_margin"
+        android:layout_below="@id/tv_reps"
+        android:text="@string/tv_1rm" />
 
-        <TextView
-            android:id="@+id/tv_your_onerm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tv_1rm" />
-
-    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_onerm_big"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ll_your_onerm"
+        android:layout_below="@id/tv_your_onerm"
         android:layout_centerHorizontal="true"
-        android:text="250 lbs"
+        android:text="250"
         android:textSize="@dimen/app_result_text" />
 
     <!-- Calculate x RM -->
@@ -112,7 +101,7 @@
         android:layout_below="@id/tv_allrepmax"
         android:layout_centerHorizontal="true"
         app:dsb_max="10"
-        app:dsb_min="0"
+        app:dsb_min="1"
         app:dsb_value="5" />
 
     <!-- Results: xRM -->
@@ -147,5 +136,10 @@
         android:layout_centerHorizontal="true"
         android:text="150 lbs"
         android:textSize="@dimen/app_result_text" />
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/touchInterceptor"></FrameLayout>
 
 </RelativeLayout>
