@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/app_rest_padding"
+    android:paddingLeft="@dimen/app_rest_padding"
+    android:paddingRight="@dimen/app_rest_padding"
+    android:paddingTop="@dimen/app_top_padding"
+    tools:context=".CalculatorFragment">
+
+    <!-- Weight Lifted -->
+    <TextView
+        android:id="@+id/tv_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/tv_weight"
+        android:textSize="@dimen/app_main_text" />
+
+    <!-- Input Weight Lifted -->
+    <EditText
+        android:id="@+id/et_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_weight"
+        android:layout_centerHorizontal="true"
+        android:ems="4"
+        android:gravity="center_horizontal"
+        android:inputType="number|numberDecimal" />
+
+
+    <!-- Reps Performed -->
+
+    <LinearLayout
+        android:id="@+id/ll_reps_perf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_weight"
+        android:layout_marginTop="@dimen/content_margin"
+        android:layout_centerHorizontal="true"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_reps"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@id/et_weight"
+            android:layout_centerHorizontal="true"
+            android:text="@string/tv_reps"
+            android:textSize="@dimen/app_main_text" />
+
+        <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+            android:id="@+id/discrete_reps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_weight"
+            android:layout_centerHorizontal="true"
+            app:dsb_max="10"
+            app:dsb_min="0"
+            app:dsb_value="5" />
+    </LinearLayout>
+
+
+    <!-- Results: 1RM -->
+
+    <LinearLayout
+        android:id="@+id/ll_your_onerm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_reps_perf"
+        android:layout_marginTop="@dimen/content_margin"
+        android:layout_centerHorizontal="true"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_your_onerm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_1rm" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_onerm_big"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_your_onerm"
+        android:layout_centerHorizontal="true"
+        android:text="250 lbs"
+        android:textSize="@dimen/app_result_text" />
+
+    <!-- Calculate x RM -->
+
+    <TextView
+        android:id="@+id/tv_allrepmax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_onerm_big"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/twice_content_margin"
+        android:text="@string/tv_repmax"
+        android:textSize="@dimen/app_main_text" />
+
+
+    <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+        android:id="@+id/discrete_allrepmax"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_allrepmax"
+        android:layout_centerHorizontal="true"
+        app:dsb_max="10"
+        app:dsb_min="0"
+        app:dsb_value="5" />
+
+    <!-- Results: xRM -->
+
+    <LinearLayout
+        android:id="@+id/ll_your_xrm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/discrete_allrepmax"
+        android:layout_centerHorizontal="true"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_your_xrm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_your" />
+
+        <TextView
+            android:id="@+id/tv_xrm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tv_repmax" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_xrm_big"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_your_xrm"
+        android:layout_centerHorizontal="true"
+        android:text="150 lbs"
+        android:textSize="@dimen/app_result_text" />
+
+</RelativeLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">OneRM</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- calculator_layout.xml -->
+    <string name="tv_weight">Weight Lifted</string>
+    <string name="tv_reps">Performed</string>
+
+    <!-- reusable strings -->
+    <string name="tv_1rm">Your 1 Rep Max is</string>
+    <string name="tv_your">Your</string>
+    <string name="tv_repmax">Rep Max</string>
+
+</resources>
