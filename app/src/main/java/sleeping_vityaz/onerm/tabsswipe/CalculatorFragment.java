@@ -2,6 +2,7 @@ package sleeping_vityaz.onerm.tabsswipe;
 
 
 import sleeping_vityaz.onerm.Calculations;
+import sleeping_vityaz.onerm.DBTools;
 import sleeping_vityaz.onerm.R;
 
 import android.content.Context;
@@ -24,14 +25,35 @@ import android.widget.TextView;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.melnykov.fab.FloatingActionButton;
+import com.nispok.snackbar.Snackbar;
+import com.nispok.snackbar.SnackbarManager;
+import com.nispok.snackbar.listeners.EventListener;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
 
 
 /**
  * Created by naja-ox
  */
 public class CalculatorFragment extends Fragment {
+
+    // Table Names
+    private static final String TABLE = "history_table";
+
+    // Common column names
+    private static final String KEY_ID = "col_id";
+    private static final String WEIGHT = "col_weight_lifted";
+    private static final String REPS = "col_reps";
+    private static final String ONERM = "col_onerm";
+    private static final String DATE_CREATED = "col_date_created";
+
 
     private TextView tv_reps, tv_weight,
             tv_your_onerm,
@@ -41,11 +63,17 @@ public class CalculatorFragment extends Fragment {
 
     private FrameLayout touchInterceptor;
 
+    ListView listView;
+    FloatingActionButton fab;
+
+    private SimpleDateFormat dateFormatter;
+
 
     private EditText et_weight;
     private DiscreteSeekBar discreteSeekBar_reps;
     private DiscreteSeekBar discreteSeekBar_allrepmax;
     private double weight;
+    private int reps;
 
     private boolean visible;
     private boolean firstTime;
@@ -55,8 +83,11 @@ public class CalculatorFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.calculator_layout, container, false);
-        //DBTools dbTools = DBTools.getInstance(this.getActivity());
+        final View rootView = inflater.inflate(R.layout.calculator_layout, container, false);
+        final DBTools dbTools = DBTools.getInstance(this.getActivity());
+
+        dateFormatter = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
+
 
         findViewsById(rootView);
 
@@ -96,6 +127,61 @@ public class CalculatorFragment extends Fragment {
         tv_your_xrm.setVisibility(TextView.INVISIBLE);
         tv_xrm.setVisibility(TextView.INVISIBLE);
         tv_xrm_big.setVisibility(TextView.INVISIBLE);
+        fab.setVisibility(FloatingActionButton.INVISIBLE);
+
+
+        fab.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(newDate.get(Calendar.YEAR), newDate.get(Calendar.MONTH), newDate.get(Calendar.DAY_OF_MONTH));
+
+                HashMap<String, String> queryValuesMap = new HashMap<String, String>();
+                queryValuesMap.put(WEIGHT, et_weight.getText().toString());
+                queryValuesMap.put(REPS, ""+reps);
+                queryValuesMap.put(ONERM, tv_onerm_big.getText().toString());
+                queryValuesMap.put(DATE_CREATED, changeDateFormat(dateFormatter.format(newDate.getTime())));
+
+                //Log.d("ON-Save-Button-Click", queryValuesMap.toString());
+
+                dbTools.insertRecord(queryValuesMap);
+
+                SnackbarManager.show(
+                        Snackbar.with(getActivity()) // context
+                                .text("Record saved") // text to display
+                                .eventListener(new EventListener() {
+                                    @Override
+                                    public void onShow(Snackbar snackbar) {
+                                        fab.hide(true);//moveUp(snackbar.getHeight());
+                                    }
+
+                                    @Override
+                                    public void onShown(Snackbar snackbar) {
+                                        Log.i("FAB v. SNACKBAR", String.format("Snackbar shown. Width: %d Height: %d Offset: %d",
+                                                snackbar.getWidth(), snackbar.getHeight(),
+                                                snackbar.getOffset()));
+                                    }
+
+                                    @Override
+                                    public void onDismiss(Snackbar snackbar) {
+                                        fab.show(true);//0, -snackbar.getHeight());
+                                    }
+
+                                    @Override
+                                    public void onDismissed(Snackbar snackbar) {
+                                       Log.i("FAB v. SNACKBAR", String.format("Snackbar dismissed. Width: %d Height: %d Offset: %d",
+                                                snackbar.getWidth(), snackbar.getHeight(),
+                                                snackbar.getOffset()));
+                                    }
+                                }) // Snackbar's EventListener
+                        , getActivity()); // activity where it is displayed
+
+
+            }
+        });
+
 
         firstTime = true;
 
@@ -103,6 +189,7 @@ public class CalculatorFragment extends Fragment {
             @Override
             public int transform(int value) {
                 Log.d("SeekBar REPS", "" + weight + " Calculations 1RM = " + Calculations.calculateRepMax(weight, value));
+                reps = value;
 
                 if (value == 1) {
                     tv_reps.setText("1 Rep " + getResources().getString(R.string.tv_reps));
@@ -132,6 +219,8 @@ public class CalculatorFragment extends Fragment {
             }
         });
 
+
+
         return rootView;
     }
 
@@ -154,6 +243,7 @@ public class CalculatorFragment extends Fragment {
                 tv_your_xrm.setVisibility(TextView.VISIBLE);
                 tv_xrm.setVisibility(TextView.VISIBLE);
                 tv_xrm_big.setVisibility(TextView.VISIBLE);
+                fab.setVisibility(FloatingActionButton.VISIBLE);
 
                 visible = true;
                 setAnimations();
@@ -195,6 +285,7 @@ public class CalculatorFragment extends Fragment {
             yoyoHelper(true, R.id.tv_your_xrm);
             yoyoHelper(true, R.id.tv_xrm);
             yoyoHelper(true, R.id.tv_xrm_big);
+            yoyoHelper(true, R.id.fab);
         }else if (!visible && firstTime){
             yoyoHelper(false, R.id.tv_reps);
             yoyoHelper(false, R.id.discrete_reps);
@@ -204,6 +295,7 @@ public class CalculatorFragment extends Fragment {
             yoyoHelper(false, R.id.tv_your_xrm);
             yoyoHelper(false, R.id.tv_xrm);
             yoyoHelper(false, R.id.tv_xrm_big);
+            yoyoHelper(false, R.id.fab);
         }
     }
 
@@ -214,7 +306,7 @@ public class CalculatorFragment extends Fragment {
                     .playOn(getActivity().findViewById(id));
         }else{
             YoYo.with(Techniques.SlideOutRight)
-                    .duration(700)
+                    .duration(400)
                     .playOn(getActivity().findViewById(id));
         }
 
@@ -224,8 +316,8 @@ public class CalculatorFragment extends Fragment {
 
         touchInterceptor = (FrameLayout) view.findViewById(R.id.touchInterceptor);
 
-        ListView listView = (ListView) view.findViewById(android.R.id.list);
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        listView = (ListView) view.findViewById(android.R.id.list);
+        fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.attachToListView(listView);
 
 
@@ -240,5 +332,17 @@ public class CalculatorFragment extends Fragment {
 
         discreteSeekBar_reps = (DiscreteSeekBar) view.findViewById(R.id.discrete_reps);
         discreteSeekBar_allrepmax = (DiscreteSeekBar) view.findViewById(R.id.discrete_allrepmax);
+    }
+
+    private String changeDateFormat(String oldDateFormatString) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyy");
+            Date d = sdf.parse(oldDateFormatString);
+            sdf.applyPattern("yyyy-MM-dd");
+            return sdf.format(d);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return "";
     }
 }

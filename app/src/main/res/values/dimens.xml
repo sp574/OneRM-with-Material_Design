@@ -15,4 +15,7 @@
     <dimen name="x4_content_margin">36dp</dimen>
     <dimen name="x5_content_margin">44dp</dimen>
     <dimen name="x6_content_margin">50dp</dimen>
+
+    <!-- PagerSlidingTabStrip -->
+    <dimen name="indicator_height">4dp</dimen>
 </resources>
