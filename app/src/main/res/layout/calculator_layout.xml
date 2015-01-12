@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -47,7 +48,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/x6_content_margin"
         app:dsb_max="10"
-        app:dsb_min="0"
+        app:dsb_min="1"
         app:dsb_value="5" />
 
     <TextView
@@ -83,23 +84,16 @@
 
     <!-- Calculate x RM -->
 
-    <TextView
-        android:id="@+id/tv_allrepmax"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_onerm_big"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/twice_content_margin"
-        android:text="@string/tv_repmax"
-        android:textSize="@dimen/app_main_text" />
+
 
 
     <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
         android:id="@+id/discrete_allrepmax"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_allrepmax"
+        android:layout_below="@id/tv_onerm_big"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/x6_content_margin"
         app:dsb_max="10"
         app:dsb_min="1"
         app:dsb_value="5" />
@@ -134,8 +128,31 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/ll_your_xrm"
         android:layout_centerHorizontal="true"
-        android:text="150 lbs"
+        android:text="150"
         android:textSize="@dimen/app_result_text" />
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:fab="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+
+        <com.melnykov.fab.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="0dp"
+            android:src="@drawable/ic_action_save"
+            fab:fab_colorNormal="@color/primary"
+            fab:fab_colorPressed="@color/primary_dark"
+            fab:fab_colorRipple="@color/primary_light" />
+    </FrameLayout>
 
     <FrameLayout
         android:layout_width="fill_parent"

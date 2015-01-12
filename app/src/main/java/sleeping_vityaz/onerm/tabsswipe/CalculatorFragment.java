@@ -18,7 +18,12 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+import com.melnykov.fab.FloatingActionButton;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
@@ -28,10 +33,9 @@ import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
  */
 public class CalculatorFragment extends Fragment {
 
-    private TextView tv_reps,
+    private TextView tv_reps, tv_weight,
             tv_your_onerm,
             tv_onerm_big,
-            tv_allrepmax,
             tv_your_xrm, tv_xrm,
             tv_xrm_big;
 
@@ -43,6 +47,9 @@ public class CalculatorFragment extends Fragment {
     private DiscreteSeekBar discreteSeekBar_allrepmax;
     private double weight;
 
+    private boolean visible;
+    private boolean firstTime;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -52,6 +59,13 @@ public class CalculatorFragment extends Fragment {
         //DBTools dbTools = DBTools.getInstance(this.getActivity());
 
         findViewsById(rootView);
+
+        YoYo.with(Techniques.SlideInLeft)
+                .duration(1500)
+                .playOn(rootView.findViewById(R.id.tv_weight));
+        YoYo.with(Techniques.SlideInLeft)
+                .duration(1500)
+                .playOn(rootView.findViewById(R.id.et_weight));
 
         et_weight.addTextChangedListener(watch);
 
@@ -78,11 +92,12 @@ public class CalculatorFragment extends Fragment {
         tv_onerm_big.setVisibility(TextView.INVISIBLE);
         tv_your_onerm.setVisibility(TextView.INVISIBLE);
 
-        tv_allrepmax.setVisibility(TextView.INVISIBLE);
         discreteSeekBar_allrepmax.setVisibility(TextView.INVISIBLE);
         tv_your_xrm.setVisibility(TextView.INVISIBLE);
         tv_xrm.setVisibility(TextView.INVISIBLE);
         tv_xrm_big.setVisibility(TextView.INVISIBLE);
+
+        firstTime = true;
 
         discreteSeekBar_reps.setNumericTransformer(new org.adw.library.widgets.discreteseekbar.DiscreteSeekBar.NumericTransformer() {
             @Override
@@ -109,7 +124,6 @@ public class CalculatorFragment extends Fragment {
             @Override
 
             public int transform(int value) {
-                tv_allrepmax.setText(value+" "+getResources().getString(R.string.tv_repmax));
                 tv_xrm.setText(" "+value+" "+getResources().getString(R.string.tv_repmax));
                 if (!et_weight.getText().toString().equals("")) {
                     tv_xrm_big.setText("" + Calculations.calculateXRM(Double.parseDouble(tv_onerm_big.getText().toString()), value));
@@ -129,30 +143,39 @@ public class CalculatorFragment extends Fragment {
 
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
+
             if (!et_weight.getText().toString().equals("")) {
                 weight = Double.parseDouble(et_weight.getText().toString());
                 tv_reps.setVisibility(TextView.VISIBLE);
                 discreteSeekBar_reps.setVisibility(TextView.VISIBLE);
                 tv_onerm_big.setVisibility(TextView.VISIBLE);
                 tv_your_onerm.setVisibility(TextView.VISIBLE);
-                tv_allrepmax.setVisibility(TextView.VISIBLE);
                 discreteSeekBar_allrepmax.setVisibility(TextView.VISIBLE);
                 tv_your_xrm.setVisibility(TextView.VISIBLE);
                 tv_xrm.setVisibility(TextView.VISIBLE);
                 tv_xrm_big.setVisibility(TextView.VISIBLE);
+
+                visible = true;
+                setAnimations();
+                firstTime = false;
+
                 tv_onerm_big.setText("" + Calculations.calculateRepMax(weight, discreteSeekBar_reps.getProgress()));
                 tv_xrm_big.setText("" + Calculations.calculateXRM(Double.parseDouble(tv_onerm_big.getText().toString()), discreteSeekBar_allrepmax.getProgress()));
 
+
             } else {
-                tv_reps.setVisibility(TextView.INVISIBLE);
+                visible = false;
+                firstTime = true;
+                setAnimations();
+                /*tv_reps.setVisibility(TextView.INVISIBLE);
                 discreteSeekBar_reps.setVisibility(TextView.INVISIBLE);
                 tv_onerm_big.setVisibility(TextView.INVISIBLE);
                 tv_your_onerm.setVisibility(TextView.INVISIBLE);
-                tv_allrepmax.setVisibility(TextView.INVISIBLE);
                 discreteSeekBar_allrepmax.setVisibility(TextView.INVISIBLE);
                 tv_your_xrm.setVisibility(TextView.INVISIBLE);
                 tv_xrm.setVisibility(TextView.INVISIBLE);
                 tv_xrm_big.setVisibility(TextView.INVISIBLE);
+*/
             }
         }
 
@@ -162,15 +185,55 @@ public class CalculatorFragment extends Fragment {
         }
     };
 
+    private void setAnimations() {
+        if (visible && firstTime) {
+            yoyoHelper(true, R.id.tv_reps);
+            yoyoHelper(true, R.id.discrete_reps);
+            yoyoHelper(true, R.id.tv_onerm_big);
+            yoyoHelper(true, R.id.tv_your_onerm);
+            yoyoHelper(true, R.id.discrete_allrepmax);
+            yoyoHelper(true, R.id.tv_your_xrm);
+            yoyoHelper(true, R.id.tv_xrm);
+            yoyoHelper(true, R.id.tv_xrm_big);
+        }else if (!visible && firstTime){
+            yoyoHelper(false, R.id.tv_reps);
+            yoyoHelper(false, R.id.discrete_reps);
+            yoyoHelper(false, R.id.tv_onerm_big);
+            yoyoHelper(false, R.id.tv_your_onerm);
+            yoyoHelper(false, R.id.discrete_allrepmax);
+            yoyoHelper(false, R.id.tv_your_xrm);
+            yoyoHelper(false, R.id.tv_xrm);
+            yoyoHelper(false, R.id.tv_xrm_big);
+        }
+    }
+
+    private void yoyoHelper(boolean in, int id){
+        if (in) {
+            YoYo.with(Techniques.SlideInLeft)
+                    .duration(700)
+                    .playOn(getActivity().findViewById(id));
+        }else{
+            YoYo.with(Techniques.SlideOutRight)
+                    .duration(700)
+                    .playOn(getActivity().findViewById(id));
+        }
+
+    }
+
     private void findViewsById(View view) {
 
         touchInterceptor = (FrameLayout) view.findViewById(R.id.touchInterceptor);
 
+        ListView listView = (ListView) view.findViewById(android.R.id.list);
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        fab.attachToListView(listView);
+
+
+        tv_weight = (TextView) view.findViewById(R.id.tv_weight);
         et_weight = (EditText) view.findViewById(R.id.et_weight);
         tv_reps = (TextView) view.findViewById(R.id.tv_reps);
         tv_your_onerm = (TextView) view.findViewById(R.id.tv_your_onerm);
         tv_onerm_big = (TextView) view.findViewById(R.id.tv_onerm_big);
-        tv_allrepmax = (TextView) view.findViewById(R.id.tv_allrepmax);
         tv_your_xrm = (TextView) view.findViewById(R.id.tv_your_xrm);
         tv_xrm = (TextView) view.findViewById(R.id.tv_xrm);
         tv_xrm_big = (TextView) view.findViewById(R.id.tv_xrm_big);

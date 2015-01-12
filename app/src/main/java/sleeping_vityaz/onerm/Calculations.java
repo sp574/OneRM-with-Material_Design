@@ -21,17 +21,15 @@ public class Calculations {
     public static double calculateXRM(double weight, int reps){
         switch (reps){
             case 1: return weight;
-            case 2: return round(0.95*weight,1);
-            case 3: return round(0.90*weight,1);
-            case 4: return round(0.88*weight,1);
-            case 5: return round(0.86*weight,1);
-            case 6: return round(0.83*weight,1);
-            case 7: return round(0.80*weight,1);
-            case 8: return round(0.78*weight,1);
-            case 9: return round(0.76*weight,1);
-            case 10: return round(0.75*weight,1);
-            case 11: return round(0.72*weight,1);
-            case 12: return round(0.70*weight,1);
+            case 2: return round(weight/1.066,1);
+            case 3: return round(weight/1.099,1);
+            case 4: return round(weight/1.132,1);
+            case 5: return round(weight/1.165,1);
+            case 6: return round(weight/1.198,1);
+            case 7: return round(weight/1.231,1);
+            case 8: return round(weight/1.264,1);
+            case 9: return round(weight/1.297,1);
+            case 10: return round(weight/1.330,1);
         }
         Log.e("CALCULATIONS", "ERROR: Calculations shouldn't get to this point");
         return weight;
