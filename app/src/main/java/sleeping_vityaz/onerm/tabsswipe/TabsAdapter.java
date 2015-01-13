@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 public class TabsAdapter extends FragmentStatePagerAdapter {
 
-    final private int NUM_TABS = 2;
+    final private int NUM_TABS = 3;
 
     public TabsAdapter(FragmentManager fm) {
         super(fm);
@@ -16,7 +16,8 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0: return new CalculatorFragment();
-            case 1: return new HistoryFragment();
+            case 1: return new PercentageFragment();
+            case 2: return new HistoryFragment();
         }
         return null;
     }
@@ -31,7 +32,8 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0: return "Calculator";
-            case 1: return "History";
+            case 1: return "Percentage";
+            case 2: return "History";
         }
         return null;
     }

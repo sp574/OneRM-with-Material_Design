@@ -114,7 +114,9 @@ public class ArraySwipeAdapterSample<T> extends ArraySwipeAdapter {
                 notifyDataSetChanged();
                 SnackbarManager.show(
                         Snackbar.with(getContext())
+                                .duration(1000) // make it shorter
                                 .text("Record Deleted"));
+
             }
         });
 

@@ -1,0 +1,96 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/app_rest_padding"
+    android:paddingLeft="@dimen/app_rest_padding"
+    android:paddingRight="@dimen/app_rest_padding"
+    android:paddingTop="@dimen/app_top_padding"
+    tools:context=".CalculatorFragment"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:id="@+id/rl_percentage">
+
+    <!-- 1RM -->
+    <TextView
+        android:id="@+id/tv_1rm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/tv_1rm_percentage"
+        android:textSize="@dimen/app_main_text" />
+
+    <!-- Input 1RM -->
+    <EditText
+        android:id="@+id/et_1rm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_1rm"
+        android:layout_centerHorizontal="true"
+        android:ems="4"
+        android:maxLength="6"
+        android:textColor="@color/primary_text"
+        android:textColorHighlight="@color/accent"
+        android:gravity="center_horizontal"
+        android:inputType="number|numberDecimal" />
+
+
+    <TextView
+        android:id="@+id/tv_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tv_percentage"
+        android:textSize="@dimen/app_main_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/x3_content_margin"
+        android:layout_below="@+id/et_1rm"
+        android:layout_alignParentEnd="false" />
+
+
+
+    <org.adw.library.widgets.discreteseekbar.DiscreteSeekBar
+        android:id="@+id/discrete_percent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_percent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/x7_content_margin"
+        app:dsb_max="100"
+        app:dsb_min="1"
+        app:dsb_value="50"
+        app:dsb_progressColor="@color/accent"
+        app:dsb_trackColor="@color/primary_dark"
+        app:dsb_indicatorColor="@color/accent"
+        app:dsb_rippleColor="@color/accent_light"/>
+
+    <TextView
+        android:id="@+id/tv_result1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x3_content_margin"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/discrete_percent"
+        android:text="@string/tv_result"
+        android:textSize="@dimen/app_secondary_text" />
+
+
+    <TextView
+        android:id="@+id/tv_result2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/content_margin"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tv_result1"
+        android:text="100"
+        android:textSize="@dimen/x2app_result_text"  />
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/touchInterceptor"></FrameLayout>
+
+
+
+</RelativeLayout>

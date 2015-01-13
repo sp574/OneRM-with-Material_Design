@@ -53,16 +53,15 @@ public class HistoryFragment extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
 
-        if (isVisibleToUser){
+        if (isVisibleToUser) {
             loadScreen();
-        }
-        else
+        } else {
             Log.d("MyFragment", "Fragment is not visible.");
+        }
     }
 
 
-
-    private void loadScreen(){
+    private void loadScreen() {
         dbTools = DBTools.getInstance(this.getActivity());
         final List<RecordObject> recordsList = dbTools.getAllRecords();
 

@@ -42,18 +42,19 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone" />
 
+
+
             <TextView
-                android:id="@+id/date"
+                android:id="@+id/onerm"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="4dp"
-                android:layout_marginRight="4dp"
-                android:layout_weight="2"
-                android:gravity="center"
-                android:text="DATE"
+                android:layout_weight="2.2"
+                android:gravity="center_vertical"
+                android:text="WEIGHT"
                 android:textColor="#444444"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:layout_marginLeft="4dp" />
 
             <TableLayout
                 android:layout_width="0dp"
@@ -82,15 +83,17 @@
             </TableLayout>
 
             <TextView
-                android:id="@+id/onerm"
+                android:id="@+id/date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="center_vertical|right"
                 android:layout_weight="2"
-                android:gravity="center_vertical"
-                android:text="WEIGHT"
+                android:text="DATE"
                 android:textColor="#444444"
-                android:textSize="16sp" />
+                android:textSize="12sp"
+                android:gravity="center_vertical|right" />
+
+
 
 
         </LinearLayout>

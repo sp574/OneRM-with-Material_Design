@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">OneRM</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">Repify</string>
     <string name="action_settings">Settings</string>
 
     <!-- calculator_layout.xml -->
     <string name="tv_weight">Weight Lifted</string>
     <string name="tv_reps">Performed</string>
+
+    <!-- percentage_layout.xml -->
+    <string name="tv_1rm_percentage">Your 1 Rep Max</string>
+    <string name="tv_percentage">% of 1 Rep Max</string>
+    <string name="tv_result">% of 1 Rep Max is</string>
 
     <!-- reusable strings -->
     <string name="tv_1rm">Your 1 Rep Max is</string>

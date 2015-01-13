@@ -119,11 +119,11 @@ public class CalculatorFragment extends Fragment {
         });
 
         tv_reps.setVisibility(TextView.INVISIBLE);
-        discreteSeekBar_reps.setVisibility(TextView.INVISIBLE);
+        discreteSeekBar_reps.setVisibility(View.INVISIBLE);
         tv_onerm_big.setVisibility(TextView.INVISIBLE);
         tv_your_onerm.setVisibility(TextView.INVISIBLE);
 
-        discreteSeekBar_allrepmax.setVisibility(TextView.INVISIBLE);
+        discreteSeekBar_allrepmax.setVisibility(View.INVISIBLE);
         tv_your_xrm.setVisibility(TextView.INVISIBLE);
         tv_xrm.setVisibility(TextView.INVISIBLE);
         tv_xrm_big.setVisibility(TextView.INVISIBLE);
@@ -153,6 +153,7 @@ public class CalculatorFragment extends Fragment {
                     SnackbarManager.show(
                             Snackbar.with(getActivity()) // context
                                     .text("Record saved") // text to display
+                                    .duration(Snackbar.SnackbarDuration.LENGTH_SHORT) // make it shorter
                                     .eventListener(new EventListener() {
 
                                         @Override
@@ -246,10 +247,10 @@ public class CalculatorFragment extends Fragment {
             if (!et_weight.getText().toString().equals("")) {
                 weight = Double.parseDouble(et_weight.getText().toString());
                 tv_reps.setVisibility(TextView.VISIBLE);
-                discreteSeekBar_reps.setVisibility(TextView.VISIBLE);
+                discreteSeekBar_reps.setVisibility(View.VISIBLE);
                 tv_onerm_big.setVisibility(TextView.VISIBLE);
                 tv_your_onerm.setVisibility(TextView.VISIBLE);
-                discreteSeekBar_allrepmax.setVisibility(TextView.VISIBLE);
+                discreteSeekBar_allrepmax.setVisibility(View.VISIBLE);
                 tv_your_xrm.setVisibility(TextView.VISIBLE);
                 tv_xrm.setVisibility(TextView.VISIBLE);
                 tv_xrm_big.setVisibility(TextView.VISIBLE);
