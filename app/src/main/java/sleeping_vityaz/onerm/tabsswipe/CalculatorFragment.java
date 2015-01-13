@@ -107,7 +107,7 @@ public class CalculatorFragment extends Fragment {
                     if (et_weight.isFocused()) {
                         Rect outRect = new Rect();
                         et_weight.getGlobalVisibleRect(outRect);
-                        if (!outRect.contains((int)event.getRawX(), (int)event.getRawY())) {
+                        if (!outRect.contains((int) event.getRawX(), (int) event.getRawY())) {
                             et_weight.clearFocus();
                             InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                             imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
@@ -131,54 +131,61 @@ public class CalculatorFragment extends Fragment {
 
 
         fab.setOnClickListener(new View.OnClickListener() {
+            boolean isUp = false;
 
             @Override
             public void onClick(View view) {
+                if (!isUp) {
+                    Calendar newDate = Calendar.getInstance();
+                    newDate.set(newDate.get(Calendar.YEAR), newDate.get(Calendar.MONTH), newDate.get(Calendar.DAY_OF_MONTH));
 
-                Calendar newDate = Calendar.getInstance();
-                newDate.set(newDate.get(Calendar.YEAR), newDate.get(Calendar.MONTH), newDate.get(Calendar.DAY_OF_MONTH));
+                    HashMap<String, String> queryValuesMap = new HashMap<String, String>();
+                    queryValuesMap.put(WEIGHT, et_weight.getText().toString());
+                    queryValuesMap.put(REPS, "" + reps);
+                    queryValuesMap.put(ONERM, tv_onerm_big.getText().toString());
+                    queryValuesMap.put(DATE_CREATED, changeDateFormat(dateFormatter.format(newDate.getTime())));
 
-                HashMap<String, String> queryValuesMap = new HashMap<String, String>();
-                queryValuesMap.put(WEIGHT, et_weight.getText().toString());
-                queryValuesMap.put(REPS, ""+reps);
-                queryValuesMap.put(ONERM, tv_onerm_big.getText().toString());
-                queryValuesMap.put(DATE_CREATED, changeDateFormat(dateFormatter.format(newDate.getTime())));
+                    Log.d("ON-Save-Button-Click", queryValuesMap.toString());
 
-                //Log.d("ON-Save-Button-Click", queryValuesMap.toString());
-
-                dbTools.insertRecord(queryValuesMap);
-
-                SnackbarManager.show(
-                        Snackbar.with(getActivity()) // context
-                                .text("Record saved") // text to display
-                                .eventListener(new EventListener() {
-                                    @Override
-                                    public void onShow(Snackbar snackbar) {
-                                        fab.hide(true);//moveUp(snackbar.getHeight());
-                                    }
-
-                                    @Override
-                                    public void onShown(Snackbar snackbar) {
-                                        Log.i("FAB v. SNACKBAR", String.format("Snackbar shown. Width: %d Height: %d Offset: %d",
-                                                snackbar.getWidth(), snackbar.getHeight(),
-                                                snackbar.getOffset()));
-                                    }
-
-                                    @Override
-                                    public void onDismiss(Snackbar snackbar) {
-                                        fab.show(true);//0, -snackbar.getHeight());
-                                    }
-
-                                    @Override
-                                    public void onDismissed(Snackbar snackbar) {
-                                       Log.i("FAB v. SNACKBAR", String.format("Snackbar dismissed. Width: %d Height: %d Offset: %d",
-                                                snackbar.getWidth(), snackbar.getHeight(),
-                                                snackbar.getOffset()));
-                                    }
-                                }) // Snackbar's EventListener
-                        , getActivity()); // activity where it is displayed
+                    dbTools.insertRecord(queryValuesMap);
 
 
+                    SnackbarManager.show(
+                            Snackbar.with(getActivity()) // context
+                                    .text("Record saved") // text to display
+                                    .eventListener(new EventListener() {
+
+                                        @Override
+                                        public void onShow(Snackbar snackbar) {
+                                            //fab.hide(true);//moveUp(snackbar.getHeight());
+                                            if (!isUp) {fab.animate().translationYBy(-snackbar.getHeight());}
+                                            isUp = true;
+                                        }
+
+                                        @Override
+                                        public void onShown(Snackbar snackbar) {
+                                            Log.i("FAB v. SNACKBAR", String.format("Snackbar shown. Width: %d Height: %d Offset: %d",
+                                                    snackbar.getWidth(), snackbar.getHeight(),
+                                                    snackbar.getOffset()));
+                                        }
+
+                                        @Override
+                                        public void onDismiss(Snackbar snackbar) {
+                                            //fab.show(true);//0, -snackbar.getHeight());
+                                            fab.animate().translationYBy(snackbar.getHeight());
+                                            isUp = false;
+                                        }
+
+                                        @Override
+                                        public void onDismissed(Snackbar snackbar) {
+                                            Log.i("FAB v. SNACKBAR", String.format("Snackbar dismissed. Width: %d Height: %d Offset: %d",
+                                                    snackbar.getWidth(), snackbar.getHeight(),
+                                                    snackbar.getOffset()));
+                                        }
+                                    }) // Snackbar's EventListener
+                            , getActivity()); // activity where it is displayed
+
+                }
             }
         });
 
@@ -211,14 +218,13 @@ public class CalculatorFragment extends Fragment {
             @Override
 
             public int transform(int value) {
-                tv_xrm.setText(" "+value+" "+getResources().getString(R.string.tv_repmax));
+                tv_xrm.setText(" " + value + " " + getResources().getString(R.string.tv_repmax));
                 if (!et_weight.getText().toString().equals("")) {
                     tv_xrm_big.setText("" + Calculations.calculateXRM(Double.parseDouble(tv_onerm_big.getText().toString()), value));
-                    }
+                }
                 return value;
             }
         });
-
 
 
         return rootView;
@@ -286,7 +292,7 @@ public class CalculatorFragment extends Fragment {
             yoyoHelper(true, R.id.tv_xrm);
             yoyoHelper(true, R.id.tv_xrm_big);
             yoyoHelper(true, R.id.fab);
-        }else if (!visible && firstTime){
+        } else if (!visible && firstTime) {
             yoyoHelper(false, R.id.tv_reps);
             yoyoHelper(false, R.id.discrete_reps);
             yoyoHelper(false, R.id.tv_onerm_big);
@@ -299,12 +305,12 @@ public class CalculatorFragment extends Fragment {
         }
     }
 
-    private void yoyoHelper(boolean in, int id){
+    private void yoyoHelper(boolean in, int id) {
         if (in) {
             YoYo.with(Techniques.SlideInLeft)
                     .duration(700)
                     .playOn(getActivity().findViewById(id));
-        }else{
+        } else {
             YoYo.with(Techniques.SlideOutRight)
                     .duration(400)
                     .playOn(getActivity().findViewById(id));

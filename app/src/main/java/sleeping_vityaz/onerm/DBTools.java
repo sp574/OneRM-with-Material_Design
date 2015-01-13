@@ -111,7 +111,7 @@ public class DBTools extends SQLiteOpenHelper {
 
     }
 
-    public void deleteRecord(String id, String TABLE) {
+    public void deleteRecord(String id) {
 
         SQLiteDatabase database = this.getWritableDatabase();
 
