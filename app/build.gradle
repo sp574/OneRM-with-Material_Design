@@ -22,7 +22,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.3'
-    compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
+    compile 'com.jpardogo.materialtabstrip:library:1.0.7'
     compile 'com.android.support:support-v4:21.0.2'
     compile project (':discreteSeekBar')
     compile 'com.nineoldandroids:library:2.4.0'

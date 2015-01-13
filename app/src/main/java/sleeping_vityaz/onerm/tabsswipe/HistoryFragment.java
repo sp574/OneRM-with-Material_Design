@@ -35,7 +35,8 @@ import java.util.List;
 public class HistoryFragment extends Fragment {
 
     public RecordArrayAdapter adapter;
-    View rootView = null;
+    ArraySwipeAdapterSample mAdapter;
+    View rootView;
     DBTools dbTools = null;
 
     @Override
@@ -67,33 +68,12 @@ public class HistoryFragment extends Fragment {
 
         if (recordsList.size() != 0) {
             final ListView listView = (ListView) rootView.findViewById(R.id.records_list);
-            final ArraySwipeAdapterSample mAdapter = new ArraySwipeAdapterSample<String>(this.getActivity(), R.layout.record_entry, R.id.key_id, recordsList);
+            mAdapter = new ArraySwipeAdapterSample<String>(this.getActivity(), R.layout.record_entry, R.id.key_id, recordsList);
+
             listView.setAdapter(mAdapter);
 
             mAdapter.setMode(SwipeItemMangerImpl.Mode.Single);
-            /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                    Toast.makeText(getActivity(), "Click", Toast.LENGTH_SHORT).show();
-
-                    final SwipeLayout swipeLayout = (SwipeLayout)view.findViewById(R.id.swipe);
-
-                    swipeLayout.findViewById(R.id.img_trash).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Toast.makeText(getActivity(), "Click Trash", Toast.LENGTH_SHORT).show();
-                            String keyID = ""+recordsList.get(position).getRecordsID();
-                            String weight = ""+recordsList.get(position).getWeight();
-                            Log.d("OnClick","keyID: "+keyID+" Weight "+weight);
-                            dbTools.deleteRecord(keyID);
-                            mAdapter.remove(mAdapter.getItem(position));
-                            mAdapter.notifyDataSetChanged();
-                        }
-                    });
-                }
-            });*/
-
+            SwipeLayout swipeLayout = (SwipeLayout) getActivity().findViewById(R.id.swipe);
 
             /*adapter = new RecordArrayAdapter(this.getActivity(), recordsList);
             listView.setAdapter(adapter);*/

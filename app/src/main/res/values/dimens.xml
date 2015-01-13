@@ -4,7 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <dimen name="app_top_padding">20dp</dimen>
-    <dimen name="app_rest_padding">30dp</dimen>
+    <dimen name="app_rest_padding">10dp</dimen>
 
     <dimen name="app_main_text">18dp</dimen>
     <dimen name="app_result_text">36dp</dimen>
@@ -17,5 +17,5 @@
     <dimen name="x6_content_margin">50dp</dimen>
 
     <!-- PagerSlidingTabStrip -->
-    <dimen name="indicator_height">4dp</dimen>
+    <dimen name="indicator_height">2dp</dimen>
 </resources>

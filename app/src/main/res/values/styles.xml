@@ -4,18 +4,23 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
 
+        <item name="colorPrimary">@color/primary</item>
+
         <item name="colorControlNormal">@color/primary</item>
         <item name="colorControlActivated">@color/primary_dark</item>
         <item name="colorControlHighlight">@color/primary_light</item>
 
-        <item name="android:actionBarStyle">@style/ActionBarTheme</item>
         <item name="android:actionBarWidgetTheme">@style/ActionBarWidget</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+        <item name="android:windowBackground">@color/windows_bg</item>
+        <item name="android:colorBackground">@color/windows_bg</item>
+
+        <!-- tab's text color , underlineColor, dividerColor and indicatorColor -->
+        <item name="android:textColorPrimary">@color/icons</item>
 
     </style>
 
-    <style name="ActionBarTheme" parent="Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@color/accent</item>
-    </style>
 
     <style name="ActionBarWidget" parent="Theme.AppCompat.Light.DarkActionBar"/>
 

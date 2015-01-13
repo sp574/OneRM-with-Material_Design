@@ -9,9 +9,12 @@
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:layout_height="48dip"
+        android:background="@color/primary"
         app:pstsShouldExpand="true"
         app:pstsIndicatorColor="@color/accent"
         app:pstsIndicatorHeight="@dimen/indicator_height"
+        app:pstsDividerColor="@color/accent"
+        app:pstsUnderlineColor="@color/accent"
         />
 
     <android.support.v4.view.ViewPager

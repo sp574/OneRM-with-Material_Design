@@ -57,7 +57,6 @@ public class RecordArrayAdapter extends ArrayAdapter<RecordObject> {
         oneRM.setText("1RM: "+recordObject.getOneRM());
 
         return convertView;
-
     }
 
 

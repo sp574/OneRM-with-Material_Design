@@ -33,6 +33,8 @@
         android:layout_centerHorizontal="true"
         android:ems="4"
         android:maxLength="6"
+        android:textColor="@color/primary_text"
+        android:textColorHighlight="@color/accent"
         android:gravity="center_horizontal"
         android:inputType="number|numberDecimal" />
 
@@ -50,10 +52,10 @@
         app:dsb_max="10"
         app:dsb_min="1"
         app:dsb_value="5"
-        app:dsb_progressColor="@color/primary"
+        app:dsb_progressColor="@color/accent"
         app:dsb_trackColor="@color/primary_dark"
-        app:dsb_indicatorColor="@color/primary"
-        app:dsb_rippleColor="@color/primary_light"/>
+        app:dsb_indicatorColor="@color/accent"
+        app:dsb_rippleColor="@color/accent_light"/>
 
     <TextView
         android:id="@+id/tv_reps"
@@ -155,7 +157,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|right"
-            android:layout_margin="0dp"
+            android:layout_margin="16dp"
             android:src="@drawable/ic_action_save"
             fab:fab_colorNormal="@color/primary"
             fab:fab_colorPressed="@color/primary_dark"

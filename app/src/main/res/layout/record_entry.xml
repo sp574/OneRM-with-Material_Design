@@ -1,98 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp">
 
-<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="80dp"
-    android:id="@+id/swipe">
-    <!-- Bottom View Start-->
-    <LinearLayout
-        android:background="#66ddff00"
-        android:id="@+id/bottom_wrapper"
-        android:layout_width="80dp"
-        android:weightSum="1"
-        android:layout_height="match_parent">
-
-        <ImageView
-            android:id="@+id/img_trash"
-            android:src="@drawable/ic_action_delete"
-            android:layout_width="match_parent"
-            android:background="#FF3B30"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp"
-            android:layout_height="match_parent" />
-
-        <!--What you want to show-->
-    </LinearLayout>
-    <!-- Bottom View End-->
-
-    <!-- Surface View Start -->
-    <LinearLayout
-        android:padding="10dp"
-        android:background="#ffffff"
+    <com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipe"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <!--What you want to show in SurfaceView-->
+        android:layout_height="80dp">
+        <!-- Bottom View Start-->
+        <LinearLayout
+            android:id="@+id/bottom_wrapper"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:background="#66ddff00"
+            android:weightSum="1">
 
-        <TextView
-            android:id="@+id/key_id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
+            <ImageView
+                android:id="@+id/img_trash"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/accent"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:src="@drawable/ic_action_delete" />
 
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="DATE"
-            android:textColor="#444444"
-            android:textSize="16sp"
-            android:layout_marginLeft="4dp"
-            android:layout_marginRight="4dp"
-            android:layout_weight="2"
-            android:layout_gravity="center"
-            android:gravity="center" />
+            <!--What you want to show-->
+        </LinearLayout>
+        <!-- Bottom View End-->
 
-        <TableLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:layout_gravity="center_vertical">
+        <!-- Surface View Start -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:padding="10dp">
+            <!--What you want to show in SurfaceView-->
 
             <TextView
-                android:id="@+id/weight"
+                android:id="@+id/key_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="DATE"
+                android:textColor="#444444"
+                android:textSize="16sp" />
+
+            <TableLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="3">
+
+                <TextView
+                    android:id="@+id/weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="WEIGHT"
+                    android:textColor="#444444"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/reps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="REPS"
+                    android:textColor="#444444"
+                    android:textSize="12sp" />
+
+            </TableLayout>
+
+            <TextView
+                android:id="@+id/onerm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="2"
+                android:gravity="center_vertical"
                 android:text="WEIGHT"
                 android:textColor="#444444"
-                android:textSize="12sp"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/reps"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="REPS"
-                android:layout_weight="1"
-                android:textColor="#444444"
-                android:textSize="12sp" />
-
-        </TableLayout>
-
-        <TextView
-            android:id="@+id/onerm"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="WEIGHT"
-            android:layout_weight="2"
-            android:textColor="#444444"
-            android:textSize="16sp"
-            android:layout_gravity="center"
-            android:gravity="center_vertical" />
+                android:textSize="16sp" />
 
 
-    </LinearLayout>
-    <!-- Surface View End -->
-</com.daimajia.swipe.SwipeLayout>
-  <!--
+        </LinearLayout>
+        <!-- Surface View End -->
+    </com.daimajia.swipe.SwipeLayout>
+</LinearLayout><!--
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"

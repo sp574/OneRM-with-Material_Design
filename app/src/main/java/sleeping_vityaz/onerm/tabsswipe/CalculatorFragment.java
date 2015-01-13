@@ -135,21 +135,21 @@ public class CalculatorFragment extends Fragment {
 
             @Override
             public void onClick(View view) {
+
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(newDate.get(Calendar.YEAR), newDate.get(Calendar.MONTH), newDate.get(Calendar.DAY_OF_MONTH));
+
+                HashMap<String, String> queryValuesMap = new HashMap<String, String>();
+                queryValuesMap.put(WEIGHT, et_weight.getText().toString());
+                queryValuesMap.put(REPS, "" + reps);
+                queryValuesMap.put(ONERM, tv_onerm_big.getText().toString());
+                queryValuesMap.put(DATE_CREATED, changeDateFormat(dateFormatter.format(newDate.getTime())));
+
+                Log.d("ON-Save-Button-Click", queryValuesMap.toString());
+
+                dbTools.insertRecord(queryValuesMap);
+
                 if (!isUp) {
-                    Calendar newDate = Calendar.getInstance();
-                    newDate.set(newDate.get(Calendar.YEAR), newDate.get(Calendar.MONTH), newDate.get(Calendar.DAY_OF_MONTH));
-
-                    HashMap<String, String> queryValuesMap = new HashMap<String, String>();
-                    queryValuesMap.put(WEIGHT, et_weight.getText().toString());
-                    queryValuesMap.put(REPS, "" + reps);
-                    queryValuesMap.put(ONERM, tv_onerm_big.getText().toString());
-                    queryValuesMap.put(DATE_CREATED, changeDateFormat(dateFormatter.format(newDate.getTime())));
-
-                    Log.d("ON-Save-Button-Click", queryValuesMap.toString());
-
-                    dbTools.insertRecord(queryValuesMap);
-
-
                     SnackbarManager.show(
                             Snackbar.with(getActivity()) // context
                                     .text("Record saved") // text to display
@@ -158,7 +158,10 @@ public class CalculatorFragment extends Fragment {
                                         @Override
                                         public void onShow(Snackbar snackbar) {
                                             //fab.hide(true);//moveUp(snackbar.getHeight());
-                                            if (!isUp) {fab.animate().translationYBy(-snackbar.getHeight());}
+                                            Log.d("isUp", "" + isUp);
+                                            if (!isUp) {
+                                                fab.animate().translationYBy(-snackbar.getHeight());
+                                            }
                                             isUp = true;
                                         }
 
@@ -173,7 +176,7 @@ public class CalculatorFragment extends Fragment {
                                         public void onDismiss(Snackbar snackbar) {
                                             //fab.show(true);//0, -snackbar.getHeight());
                                             fab.animate().translationYBy(snackbar.getHeight());
-                                            isUp = false;
+
                                         }
 
                                         @Override
@@ -181,6 +184,7 @@ public class CalculatorFragment extends Fragment {
                                             Log.i("FAB v. SNACKBAR", String.format("Snackbar dismissed. Width: %d Height: %d Offset: %d",
                                                     snackbar.getWidth(), snackbar.getHeight(),
                                                     snackbar.getOffset()));
+                                            isUp = false;
                                         }
                                     }) // Snackbar's EventListener
                             , getActivity()); // activity where it is displayed
