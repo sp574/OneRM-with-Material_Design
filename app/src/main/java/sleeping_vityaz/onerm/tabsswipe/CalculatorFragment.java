@@ -170,8 +170,7 @@ public class CalculatorFragment extends Fragment {
                                         @Override
                                         public void onDismiss(Snackbar snackbar) {
                                             //fab.show(true);//0, -snackbar.getHeight());
-                                            fab.animate().translationYBy(snackbar.getHeight());
-
+                                                fab.animate().translationYBy(snackbar.getHeight());
                                         }
 
                                         @Override
