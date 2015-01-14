@@ -47,8 +47,10 @@ public class MainActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.remove_ads) {
+            return true;
+        }
+        if (id == R.id.about) {
             return true;
         }
 

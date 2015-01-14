@@ -21,4 +21,6 @@
 
     <!-- PagerSlidingTabStrip -->
     <dimen name="indicator_height">2dp</dimen>
+
+
 </resources>

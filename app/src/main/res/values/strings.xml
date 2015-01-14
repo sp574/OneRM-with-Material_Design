@@ -18,4 +18,8 @@
     <string name="tv_your">Your</string>
     <string name="tv_repmax">Rep Max</string>
 
+    <!-- App bar drop down-->
+    <string name="remove_ads">Remove Ads</string>
+    <string name="about">About</string>
+
 </resources>
