@@ -10,8 +10,12 @@
         <item name="colorControlActivated">@color/primary_dark</item>
         <item name="colorControlHighlight">@color/primary_light</item>
 
+        <item name="android:windowActionBar">true</item>
         <item name="android:actionBarWidgetTheme">@style/ActionBarWidget</item>
+
         <item name="android:windowContentOverlay">@null</item>
+        <!-- Support library compatibility -->
+        <item name="elevation">0dp</item>
 
         <item name="android:windowBackground">@color/windows_bg</item>
         <item name="android:colorBackground">@color/windows_bg</item>

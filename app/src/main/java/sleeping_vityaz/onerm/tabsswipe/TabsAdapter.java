@@ -2,9 +2,10 @@ package sleeping_vityaz.onerm.tabsswipe;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-public class TabsAdapter extends FragmentStatePagerAdapter {
+public class TabsAdapter extends FragmentPagerAdapter {
 
     final private int NUM_TABS = 3;
 
@@ -34,8 +35,7 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
             case 0: return "Calculator";
             case 1: return "Percentage";
             case 2: return "History";
+            default:return null;
         }
-        return null;
     }
-
 }

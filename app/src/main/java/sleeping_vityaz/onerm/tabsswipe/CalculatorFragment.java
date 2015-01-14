@@ -91,12 +91,6 @@ public class CalculatorFragment extends Fragment {
 
         findViewsById(rootView);
 
-        YoYo.with(Techniques.SlideInLeft)
-                .duration(1500)
-                .playOn(rootView.findViewById(R.id.tv_weight));
-        YoYo.with(Techniques.SlideInLeft)
-                .duration(1500)
-                .playOn(rootView.findViewById(R.id.et_weight));
 
         et_weight.addTextChangedListener(watch);
 

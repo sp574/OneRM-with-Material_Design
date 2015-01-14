@@ -44,10 +44,13 @@ public class HistoryFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.history_layout, container, false);
+
         loadScreen();
 
         return rootView;
     }
+
+
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
@@ -60,14 +63,13 @@ public class HistoryFragment extends Fragment {
         }
     }
 
-
     private void loadScreen() {
         dbTools = DBTools.getInstance(this.getActivity());
         final List<RecordObject> recordsList = dbTools.getAllRecords();
 
-        if (recordsList.size() != 0) {
-            final ListView listView = (ListView) rootView.findViewById(R.id.records_list);
-            mAdapter = new ArraySwipeAdapterSample<String>(this.getActivity(), R.layout.record_entry, R.id.key_id, recordsList);
+        if (recordsList.size() != 0 && rootView!=null) {
+            ListView listView = (ListView) rootView.findViewById(R.id.records_list);
+            mAdapter = new ArraySwipeAdapterSample<String>(getActivity(), R.layout.record_entry, R.id.key_id, recordsList);
 
             listView.setAdapter(mAdapter);
 
@@ -77,8 +79,6 @@ public class HistoryFragment extends Fragment {
             /*adapter = new RecordArrayAdapter(this.getActivity(), recordsList);
             listView.setAdapter(adapter);*/
         }
-
-
     }
 
 

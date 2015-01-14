@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">Repify</string>
+    <string name="app_name_big">REPIFY</string>
     <string name="action_settings">Settings</string>
 
     <!-- calculator_layout.xml -->
