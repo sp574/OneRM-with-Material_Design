@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="sleeping_vityaz.onerm" >
 
+    <uses-sdk android:minSdkVersion="15" android:targetSdkVersion="21"/>
+
     <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
@@ -17,6 +19,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".DonateActivity"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 

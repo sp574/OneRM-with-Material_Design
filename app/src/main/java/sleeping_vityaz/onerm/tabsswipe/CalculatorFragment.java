@@ -86,7 +86,7 @@ public class CalculatorFragment extends Fragment {
         final View rootView = inflater.inflate(R.layout.calculator_layout, container, false);
         final DBTools dbTools = DBTools.getInstance(this.getActivity());
 
-        dateFormatter = new SimpleDateFormat("MM-dd-yyyy", Locale.US);
+        dateFormatter = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
 
 
         findViewsById(rootView);
@@ -146,7 +146,7 @@ public class CalculatorFragment extends Fragment {
                 if (!isUp) {
                     SnackbarManager.show(
                             Snackbar.with(getActivity()) // context
-                                    .text("Record saved") // text to display
+                                    .text(getString(R.string.cf_rsaved)) // text to display
                                     .duration(Snackbar.SnackbarDuration.LENGTH_SHORT) // make it shorter
                                     .eventListener(new EventListener() {
 
@@ -197,11 +197,9 @@ public class CalculatorFragment extends Fragment {
                 reps = value;
 
                 if (value == 1) {
-                    tv_reps.setText("1 Rep " + getResources().getString(R.string.tv_reps));
-                } else if (value == 0) {
-                    tv_reps.setText("Reps " + getResources().getString(R.string.tv_reps));
+                    tv_reps.setText(getString(R.string.cf_one_rep)+" " + getResources().getString(R.string.tv_reps));
                 } else {
-                    tv_reps.setText(value + " Reps " + getResources().getString(R.string.tv_reps));
+                    tv_reps.setText(value + " "+getString(R.string.cf_reps)+" " + getResources().getString(R.string.tv_reps));
                 }
 
                 if (!et_weight.getText().toString().equals("")) {

@@ -20,7 +20,38 @@
     <string name="tv_repmax">Rep Max</string>
 
     <!-- App bar drop down-->
-    <string name="remove_ads">Remove Ads</string>
+    <string name="donate_me">Tip the developer</string>
     <string name="about">About</string>
+
+    <!-- TabsAdapter: Tab names -->
+    <string name="ta_calculator">Calculator</string>
+    <string name="ta_percentage">Percentage</string>
+    <string name="ta_history">History</string>
+
+    <!-- CalculatorFragment -->
+    <string name="cf_rsaved">Record saved</string>
+    <string name="cf_one_rep">1 Rep</string>
+    <string name="cf_reps">Reps</string>
+
+    <!-- HistoryFragment -->
+    <string name="hf_weight_lifted">Weight lifted:</string>
+    <string name="hf_reps_performed">Reps performed:</string>
+    <string name="hf_1rm">1RM:</string>
+    <string name="hf_rdeleted">Record deleted</string>
+
+    <!-- DonateActivity -->
+    <string name="plz_donate">Repify is and always will be free and without ads. If you like this app and would like to support the developer, you\'re welcome to donate!</string>
+    <string name="small_donate">$0.99 - every cent is appreciated!..</string>
+    <string name="medium_donate">$1.79 - you are nice ;)</string>
+    <string name="large_donate">$2.49 - this can buy me a coffee </string>
+    <string name="xl_donate">$3.50 - treefiddy</string>
+    <string name="xxl_donate">$7.00 - moola!</string>
+
+    <string name="bt_donate">Donate</string>
+    <string name="thank_you">Thank you! Have a fantastic day :)</string>
+
+
+
+
 
 </resources>

@@ -8,6 +8,7 @@
 
     <dimen name="app_main_text">18dp</dimen>
     <dimen name="app_secondary_text">16dp</dimen>
+    <dimen name="app_donate_text">14dp</dimen>
     <dimen name="app_result_text">36dp</dimen>
     <dimen name="x2app_result_text">55dp</dimen>
 

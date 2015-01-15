@@ -60,7 +60,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="3">
+                android:layout_weight="3"
+                android:paddingLeft="@dimen/content_margin">
 
                 <TextView
                     android:id="@+id/weight"
@@ -91,7 +92,8 @@
                 android:text="DATE"
                 android:textColor="#444444"
                 android:textSize="12sp"
-                android:gravity="center_vertical|right" />
+                android:gravity="center_vertical|right"
+                android:paddingRight="@dimen/x3_content_margin" />
 
 
 

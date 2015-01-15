@@ -1,16 +1,21 @@
 package sleeping_vityaz.onerm.tabsswipe;
 
+import android.app.Activity;
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import sleeping_vityaz.onerm.R;
+
 public class TabsAdapter extends FragmentPagerAdapter {
 
+    private Context c;
     final private int NUM_TABS = 3;
 
-    public TabsAdapter(FragmentManager fm) {
-        super(fm);
+    public TabsAdapter(FragmentManager fm, Context c) {
+        super(fm); this.c = c;
     }
 
     @Override
@@ -32,9 +37,9 @@ public class TabsAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle (int position) {
 
         switch (position) {
-            case 0: return "Calculator";
-            case 1: return "Percentage";
-            case 2: return "History";
+            case 0: return c.getString(R.string.ta_calculator);
+            case 1: return c.getString(R.string.ta_percentage);
+            case 2: return c.getString(R.string.ta_history);
             default:return null;
         }
     }

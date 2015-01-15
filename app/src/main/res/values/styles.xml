@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar"> <!-- if this doesnt work, try NoActionBar instead of Light-->
         <!-- Customize your theme here. -->
 
         <item name="colorPrimary">@color/primary</item>
@@ -22,6 +22,8 @@
 
         <!-- tab's text color , underlineColor, dividerColor and indicatorColor -->
         <item name="android:textColorPrimary">@color/icons</item>
+        <item name="android:textColor">@color/secondary_text</item>
+
 
     </style>
 

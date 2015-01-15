@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Repify</string>
+    <string name="app_name_big">REPIFY</string>
+    <string name="action_settings">Настройки</string>
+
+    <!-- calculator_layout.xml -->
+    <string name="tv_weight">Поднятый Вес</string>
+    <string name="tv_reps">Повторений</string>
+
+    <!-- percentage_layout.xml -->
+    <string name="tv_1rm_percentage">Ваш 1ПМ</string>
+    <string name="tv_percentage">% 1ПМ</string>
+    <string name="tv_result">% от 1ПМ</string>
+
+    <!-- reusable strings -->
+    <string name="tv_1rm">Ваш 1ПМ</string>
+    <string name="tv_your">Ваш</string>
+    <string name="tv_repmax">ПМ</string>
+
+    <!-- App bar drop down-->
+    <string name="remove_ads">Помочь разработчику</string>
+    <string name="about">О программе</string>
+
+    <!-- TabsAdapter: Tab names -->
+    <string name="ta_calculator">Калькулятор</string>
+    <string name="ta_percentage">Проценты</string>
+    <string name="ta_history">Записи</string>
+
+    <!-- CalculatorFragment -->
+    <string name="cf_rsaved">Запись сохранена</string>
+    <string name="cf_one_rep">1</string>
+    <string name="cf_reps"></string>
+
+    <!-- HistoryFragment -->
+    <string name="hf_weight_lifted">Поднятый вес:</string>
+    <string name="hf_reps_performed">Повторений:</string>
+    <string name="hf_1rm">1ПМ:</string>
+    <string name="hf_rdeleted">Запись удалена</string>
+
+
+</resources>

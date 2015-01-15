@@ -33,8 +33,8 @@ import sleeping_vityaz.onerm.R;
  */
 public class ArraySwipeAdapterSample<T> extends ArraySwipeAdapter {
 
-    SimpleDateFormat oldFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
-    SimpleDateFormat newFormat = new SimpleDateFormat("MMM dd, yy", Locale.US);
+    SimpleDateFormat oldFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+    SimpleDateFormat newFormat = new SimpleDateFormat("MMM dd, yy", Locale.getDefault());
     private List<RecordObject> recOBjects;
 
     public ArraySwipeAdapterSample(Context context, int resource) {
@@ -85,9 +85,10 @@ public class ArraySwipeAdapterSample<T> extends ArraySwipeAdapter {
             e.printStackTrace();
         }
         recordsID.setText(""+recordObject.getRecordsID());
-        weight.setText("Weight lifted " + recordObject.getWeight());
-        reps.setText(("Reps performed " + recordObject.getReps()));
-        oneRM.setText("1RM: " + recordObject.getOneRM());
+        weight.setText(getContext().getString(R.string.hf_weight_lifted)+" " + recordObject.getWeight());
+        reps.setText((getContext().getString(R.string.hf_reps_performed)+" " + recordObject.getReps()));
+        oneRM.setText(getContext().getString(R.string.hf_1rm)+" " + recordObject.getOneRM());
+
 
         ImageView imageView = (ImageView) convertView.findViewById(R.id.img_trash);
 
@@ -115,7 +116,7 @@ public class ArraySwipeAdapterSample<T> extends ArraySwipeAdapter {
                 SnackbarManager.show(
                         Snackbar.with(getContext())
                                 .duration(1000) // make it shorter
-                                .text("Record Deleted"));
+                                .text(getContext().getString(R.string.hf_rdeleted)));
             }
         });
         swipeLayout.close();

@@ -4,3 +4,7 @@
 /.idea/libraries
 .DS_Store
 /build
+
+app/src/main/res/values/license.xml
+src/main/res/layout/donate_layout.xml
+app/src/main/java/sleeping_vityaz/onerm/DonateActivity.java

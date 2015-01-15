@@ -1,1 +1,5 @@
 /build
+
+src/main/res/values/license.xml
+src/main/res/layout/donate_layout.xml
+src/main/java/sleeping_vityaz/onerm/DonateActivity.java

@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <include layout="@layout/toolbar"/>
 
     <com.astuetz.PagerSlidingTabStrip
         android:id="@+id/tabs"
@@ -18,6 +19,7 @@
         app:pstsIndicatorHeight="@dimen/indicator_height"
         app:pstsDividerColor="@color/accent"
         app:pstsUnderlineColor="@color/accent"
+        android:textColor="@color/icons"
         />
 
     <android.support.v4.view.ViewPager
